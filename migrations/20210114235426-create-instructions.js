@@ -1,24 +1,19 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('ingredients', {
+    return queryInterface.createTable('instructions', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      amount: {
-        type: Sequelize.NUMERIC(5,2),
+      specification: {
+        type: Sequelize.TEXT,
         allowNull: false
       },
-      measurementUnitId: {
+      listOrder: {
         type: Sequelize.INTEGER,
-        allowNull: false,
-        references: { model: "MeasurementUnits"}
-      },
-      foodStuff: {
-        type: Sequelize.STRING(500),
         allowNull: false
       },
       recipeId: {
@@ -37,6 +32,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('ingredients');
+    return queryInterface.dropTable('instructions');
   }
 };
